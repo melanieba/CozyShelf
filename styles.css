@@ -1,0 +1,37 @@
+body {
+  background-color: #f3e2b0;
+  font-family: 'Georgia';
+  color: #333333;
+}
+
+h1 {
+  color: #273E47;
+  font-size: 36px;
+  text-align: center;
+}
+
+h2 {
+  color: #273E47;
+  font-size: 24px;
+  margin-top: 20px;
+}
+
+.button {
+  background-color: #D8973C;
+  border-radius: 25px;
+  border: 2px solid #D8973C;
+  padding: 20px;
+  width: 150px;
+  height: 75px;
+  color: #273E47;
+}
+
+#button-right{
+  position:absolute;
+  right:0;
+}
+
+/* #button-bottom{
+  position:absolute;
+  center:0;
+} */

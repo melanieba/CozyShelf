@@ -16,6 +16,15 @@ h2 {
   margin-top: 20px;
 }
 
+.container{
+  display: block;
+  /* align-items: center; */
+  /* justify-content: center; */
+  /* height: 100vh; */
+  padding: 50px;
+  box-sizing: border-box;
+}
+
 .button {
   background-color: #D8973C;
   border-radius: 25px;
@@ -35,3 +44,43 @@ h2 {
   position:absolute;
   center:0;
 } */
+
+.bookshelf-container{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  /* height: 100vh; */
+  padding: 50px;
+  box-sizing: border-box;
+}
+
+
+.bookshelf {
+  max-width: 1000px;
+  width: 80%;
+  position: relative;
+  border-bottom: 16px solid #f3f3f3;
+  border-left: 20px solid transparent;
+  border-right: 20px solid transparent;
+  padding-top: 40px;
+}
+
+
+
+.books {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 10%;
+  margin-top: -20px;
+}
+
+.book {
+  display: block;
+  width: 100%;
+  aspect-ratio: 115 / 180;
+  background-size: cover;
+  background-position: center;
+  border-radius: 4px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+  text-decoration: none;
+}

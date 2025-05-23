@@ -17,11 +17,9 @@ h2 {
 }
 
 .container{
-  display: block;
-  /* align-items: center; */
-  /* justify-content: center; */
-  /* height: 100vh; */
-  padding: 50px;
+  display: flex;
+  justify-content: space-between;
+  padding: 10px;
   box-sizing: border-box;
 }
 
@@ -29,31 +27,32 @@ h2 {
   background-color: #D8973C;
   border-radius: 25px;
   border: 2px solid #D8973C;
-  padding: 20px;
-  width: 150px;
-  height: 75px;
+  padding: 30px 50px;
+  width: 125px;
+  height: 25px;
+  font-size: 18px;
   color: #273E47;
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
-#button-right{
-  position:absolute;
-  right:0;
+.center-container{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 10px;
+  box-sizing: border-box;
 }
-
-/* #button-bottom{
-  position:absolute;
-  center:0;
-} */
 
 .bookshelf-container{
   display: flex;
   align-items: center;
   justify-content: center;
-  /* height: 100vh; */
-  padding: 50px;
+  padding: 20px;
   box-sizing: border-box;
 }
-
 
 .bookshelf {
   max-width: 1000px;
@@ -64,8 +63,6 @@ h2 {
   border-right: 20px solid transparent;
   padding-top: 40px;
 }
-
-
 
 .books {
   display: grid;

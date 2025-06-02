@@ -16,6 +16,7 @@ h2 {
   margin-top: 20px;
 }
 
+/* containers and buttons for main page */
 .container{
   display: flex;
   justify-content: space-between;
@@ -46,6 +47,7 @@ h2 {
   box-sizing: border-box;
 }
 
+/* index.html bookshelf */
 .bookshelf-container{
   display: flex;
   align-items: center;
@@ -80,4 +82,37 @@ h2 {
   border-radius: 4px;
   box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
   text-decoration: none;
+}
+
+/* add book form */
+.form-container {
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 30px;
+  background-color: #fff9e6;
+  border-radius: 12px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.form-container h2 {
+  text-align: center;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+label {
+  font-weight: bold;
+  color: #273E47;
+}
+
+input[type="text"],
+input[type="url"] {
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  font-size: 16px;
 }

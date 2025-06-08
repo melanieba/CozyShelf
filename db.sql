@@ -36,3 +36,6 @@ select * from Note;
 truncate table Note;
 delete from Book where book_id=1;
 alter table Book auto_increment = 1;
+
+alter table Book
+add genre varchar(100);

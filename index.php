@@ -12,7 +12,7 @@
 
 <div class="container">
   <a class="button" href="#left"> {number} Stars</a>
-  <a class="button" href="#right">Goal Overview</a>
+  <a class="button" onclick="window.location.href='goalOverview.html'">Goal Overview</a>
 </div>
 
 <div class="bookshelf-container">

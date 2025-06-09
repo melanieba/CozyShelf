@@ -16,65 +16,49 @@
 </div>
 
 <div class="bookshelf-container">
-  <div class="bookshelf">
-    <div class="books">
-    <?php
-      include 'db_connect.php';
+  <?php
+    include 'db_connect.php';
+    $conn = connect();
 
-      $conn = connect();
+    $sql = "SELECT * FROM Book";
+    $result = $conn->query($sql);
 
-      $sql = "SELECT * FROM Book";
-      $result = $conn->query($sql);
+    if ($result->num_rows == 0) {
+      echo "<h2>No books on your shelf</h2>";
+    } else {
+      $cover_placeholder_url = 'https://bookstoreromanceday.org/wp-content/uploads/2020/08/book-cover-placeholder.png';
+      $count = 0;
+      $books_per_row = 4;
 
-      if ($result->num_rows == 0) {
-        echo "<H1>No books on your shelf</H1>";
-      } else {
-        while ($row = $result->fetch_assoc()) {
-
-          // need to find a good one
-          $cover_placeholder_url = 'https://bookstoreromanceday.org/wp-content/uploads/2020/08/book-cover-placeholder.png';
-          
-          $cover_url = $row['book_cover'];
-
-          if (is_null($cover_url) or empty($cover_url)) {
-            $cover_url = $cover_placeholder_url;
-          }
-
-          ?>
-
-            <a class="book" href="show_book.php?book_id=<?= $row['book_id']?>"
-                style="background-image: url('<?= $cover_url; ?>');"></a>
-
-          <?php
-        }
+      while ($row = $result->fetch_assoc()) {
+        if ($count % $books_per_row == 0) {
+        // Start new shelf row
+        echo '<div class="bookshelf"><div class="books">';
       }
 
-      disconnect($conn);
-    ?>
+        $cover_url = !empty($row['book_cover']) ? $row['book_cover'] : $cover_placeholder_url;
+        $book_id = htmlspecialchars($row['book_id']);
+        $safe_cover_url = htmlspecialchars($cover_url);
 
-          <!-- // these are all field we can use
-          // <td>{$row['book_id']}</td>
-          // <td>{$row['book_title']}</td>
-          // <td>{$row['author_last_name']}</td>
-          // <td>{$row['author_first_name']}</td>
-          // <td><img src='{$row['book_cover']}' width='50' /></td>
-          // <td>{$row['page_count']}</td>
-          // <td>{$row['book_rating']}</td>
-          // <td>{$row['current_progress']}</td>
-          // <td>{$row['book_description']}</td> -->
-   
-      <!-- link will be replaced with details page of the book -->
-      <!-- image will be replaced with the data pulled from the database -->
-      <!-- <a class="book" href="https://www.goodreads.com/book/show/50214741" target="_blank"
-         style="background-image: url('https://i.gr-assets.com/images/S/compressed.photo.goodreads.com/books/1581128232l/50214741.jpg');"></a>
-      <a class="book" href="https://www.goodreads.com/book/show/42505366" target="_blank"
-         style="background-image: url('https://i.gr-assets.com/images/S/compressed.photo.goodreads.com/books/1544204706l/42505366.jpg');"></a>
-      <a class="book" href="https://www.goodreads.com/book/show/42201395" target="_blank"
-         style="background-image: url('https://i.gr-assets.com/images/S/compressed.photo.goodreads.com/books/1541621322l/42201395.jpg');"></a>
-      <a class="book" href="https://www.goodreads.com/book/show/43263520" target="_blank"
-         style="background-image: url('https://i.gr-assets.com/images/S/compressed.photo.goodreads.com/books/1548518877l/43263520._SY475_.jpg');"></a> -->
-    </div>
-  </div>
+        echo "<a class='book' href='show_book.php?book_id={$book_id}' style='background-image: url(\"{$safe_cover_url}\");'></a>";
+          
+        $count++;
+
+        if ($count % $books_per_row == 0) {
+          // Close full shelf row
+          echo '</div></div>';
+        }
+
+      }
+      if ($count % $books_per_row != 0) {
+        // Close an incomplete last row
+        echo '</div></div>';
+      }
+      
+    }
+
+    disconnect($conn);
+  ?>
 </div>
 
 <div class="center-container">

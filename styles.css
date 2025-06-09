@@ -153,3 +153,9 @@ input[type="url"] {
   width: 40%;
   background-color: #D8973C;
 }
+
+.book-cover {
+  width: 200px;
+  height: auto;
+  object-fit: cover;
+}

@@ -37,7 +37,7 @@
     Title: <label type="text"><?= $row['book_title']?></label><br>
     Author: <label type="text"><?= $row['author_first_name']?></label>&nbsp;<label type="text"><?= $row['author_last_name']?></label><br>
     Genre: <label type="text"><?= $row['genre']?></label><br>
-    Cover: <img type="text" src="<?= $row['book_cover']?>"><br>
+    Cover: <img type="text" class="book-cover" src="<?= $row['book_cover']?>"><br>
     Page Count: <label type="number"><?= $row['page_count']?></label><br>
 
     <br>

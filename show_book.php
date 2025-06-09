@@ -60,7 +60,7 @@ $notesResult = $noteQuery->get_result();
     <p><strong>Page Count: </strong><?= htmlspecialchars($row['page_count'])?></p>
     <strong>Cover: </strong> <img type="text" class="book-cover" src="<?= $row['book_cover']?>"><br>
 
-    <p><strong>Rating:</strong> <?= htmlspecialchars($row['book_rating']) ?>/5</p>
+    <!-- <p><strong>Rating:</strong> <?= htmlspecialchars($row['book_rating']) ?>/5</p> -->
     <p><strong>Progress:</strong> <?= htmlspecialchars($row['current_progress']) ?>/<?= htmlspecialchars($row['page_count']) ?> pages</p>
 
     <br>

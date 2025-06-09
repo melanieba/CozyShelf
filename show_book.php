@@ -54,10 +54,21 @@ $notesResult = $noteQuery->get_result();
   ?>
 
   <div>
-    Title: <label type="text"><?= $row['book_title']?></label><br>
-    Author: <label type="text"><?= $row['author_first_name']?></label>&nbsp;<label type="text"><?= $row['author_last_name']?></label><br>
-<p><strong>Rating:</strong> <?= htmlspecialchars($row['book_rating']) ?>/5</p>
-<p><strong>Progress:</strong> <?= htmlspecialchars($row['current_progress']) ?>/<?= htmlspecialchars($row['page_count']) ?> pages</p>
+    <p><strong>Title: </strong><?= htmlspecialchars($row['book_title'])?></p>
+    <p><strong>Author: </strong><?= htmlspecialchars($row['author_first_name'])?> <?= htmlspecialchars($row['author_last_name'])?></p>
+    <p><strong>Genre: </strong><?= htmlspecialchars($row['genre'])?></p>
+    <p><strong>Page Count: </strong><?= htmlspecialchars($row['page_count'])?></p>
+    <strong>Cover: </strong> <img type="text" class="book-cover" src="<?= $row['book_cover']?>"><br>
+
+    <p><strong>Rating:</strong> <?= htmlspecialchars($row['book_rating']) ?>/5</p>
+    <p><strong>Progress:</strong> <?= htmlspecialchars($row['current_progress']) ?>/<?= htmlspecialchars($row['page_count']) ?> pages</p>
+
+    <br>
+    <br>
+    <br>
+
+    
+  </div>
 
 <form method="POST" class="book-progress">
   <label for="progress">Update your progress:</label>
@@ -82,17 +93,6 @@ $notesResult = $noteQuery->get_result();
     </div>
   <?php endwhile; ?>
 </div>
-$row['author_last_name']?></label><br>
-    Genre: <label type="text"><?= $row['genre']?></label><br>
-    Cover: <img type="text" class="book-cover" src="<?= $row['book_cover']?>"><br>
-    Page Count: <label type="number"><?= $row['page_count']?></label><br>
-
-    <br>
-    <br>
-    <br>
-
-    
-  </div>
 
   <?php 
           $result->free();

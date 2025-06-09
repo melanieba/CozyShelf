@@ -11,7 +11,7 @@
 <h1>CozyShelf</h1>
 
 <div class="container">
-  <a class="button" href="#left"> {number} Stars</a>
+  <a class="button"> 36 Stars</a>
   <a class="button" onclick="window.location.href='goalOverview.html'">Goal Overview</a>
 </div>
 

@@ -37,9 +37,5 @@ truncate table Note;
 delete from Book where book_id=1;
 alter table Book auto_increment = 1;
 
-SET SQL_SAFE_UPDATES = 0;
-delete from Book;
-SET SQL_SAFE_UPDATES = 1;
-
 alter table Book
 add genre varchar(100);

@@ -43,8 +43,6 @@ $noteQuery = $conn->prepare("SELECT note_date, note_time, note_content FROM Note
 $noteQuery->bind_param("i", $_GET["book_id"]);
 $noteQuery->execute();
 $notesResult = $noteQuery->get_result();
-        $conn = connect();
-
         $sql = "SELECT * FROM Book where book_id=" . htmlspecialchars($_GET["book_id"]);
 
         $result = $conn->query($sql);
@@ -57,8 +55,7 @@ $notesResult = $noteQuery->get_result();
 
   <div>
     Title: <label type="text"><?= $row['book_title']?></label><br>
-    Author: <label type="text"><?= $row['author_first_name']?></label>&nbsp;<label type="text"><?= 
-</label><br>
+    Author: <label type="text"><?= $row['author_first_name']?></label>&nbsp;<label type="text"><?= $row['author_last_name']?></label><br>
 <p><strong>Rating:</strong> <?= htmlspecialchars($row['book_rating']) ?>/5</p>
 <p><strong>Progress:</strong> <?= htmlspecialchars($row['current_progress']) ?>/<?= htmlspecialchars($row['page_count']) ?> pages</p>
 

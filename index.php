@@ -1,24 +1,3 @@
-<<<<<<< HEAD
-<?php
-include 'db_connect.php';
-$result = $conn->query("SELECT book_id, book_title, book_cover FROM Book");
-?>
-
-<!DOCTYPE html>
-<html>
-<head>
-  <title>CozyShelf</title>
-  <link rel="stylesheet" href="styles.css">
-  <style>
-    .books {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-      gap: 30px;
-      margin-top: -20px;
-    }
-  </style>
-</head>
-=======
 
 <!-- this is the landing page -->
 <!DOCTYPE html>
@@ -27,32 +6,18 @@ $result = $conn->query("SELECT book_id, book_title, book_cover FROM Book");
     <title>CozyShelf</title>
     <link rel="stylesheet" href="styles.css">
   </head>
->>>>>>> 0c31cd98896695a19934ab328264bcf7c134f096
 <body>
 
 <h1>CozyShelf</h1>
 
 <div class="container">
   <a class="button" href="#left"> {number} Stars</a>
-<<<<<<< HEAD
-  <a class="button" href="#right">Goal Overview</a>
-=======
   <a class="button" onclick="window.location.href='goalOverview.html'">Goal Overview</a>
->>>>>>> 0c31cd98896695a19934ab328264bcf7c134f096
 </div>
 
 <div class="bookshelf-container">
   <div class="bookshelf">
     <div class="books">
-<<<<<<< HEAD
-      <?php while ($row = $result->fetch_assoc()): ?>
-        <a class="book"
-           href="book-details.php?id=<?= $row['book_id'] ?>"
-           style="background-image: url('<?= htmlspecialchars($row['book_cover']) ?>');"
-           title="<?= htmlspecialchars($row['book_title']) ?>">
-        </a>
-      <?php endwhile; ?>
-=======
     <?php
       include 'db_connect.php';
 
@@ -108,23 +73,14 @@ $result = $conn->query("SELECT book_id, book_title, book_cover FROM Book");
          style="background-image: url('https://i.gr-assets.com/images/S/compressed.photo.goodreads.com/books/1541621322l/42201395.jpg');"></a>
       <a class="book" href="https://www.goodreads.com/book/show/43263520" target="_blank"
          style="background-image: url('https://i.gr-assets.com/images/S/compressed.photo.goodreads.com/books/1548518877l/43263520._SY475_.jpg');"></a> -->
->>>>>>> 0c31cd98896695a19934ab328264bcf7c134f096
     </div>
   </div>
 </div>
 
 <div class="center-container">
-<<<<<<< HEAD
-  <a class="button" href="newBookForm.html">Add New Book</a>
-</div>
-
-</body>
-</html>
-=======
   <a class="button" onclick="window.location.href='newBookForm.html'">Add New Book</a>
 </div>
 
 
 </body>
 </html>
->>>>>>> 0c31cd98896695a19934ab328264bcf7c134f096

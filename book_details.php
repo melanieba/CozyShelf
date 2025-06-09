@@ -28,7 +28,7 @@ $stmt->close();
     .book-detail-container {
       max-width: 800px;
       margin: auto;
-      background-color: #fff9e6;
+      background-color: #F3E2B0;
       padding: 30px;
       border-radius: 12px;
       box-shadow: 0 4px 10px rgba(0,0,0,0.1);

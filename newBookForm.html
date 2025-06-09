@@ -10,29 +10,21 @@
 <h1>CozyShelf</h1>
 
 <div class="container">
-  <a class="button" onclick="window.location.href='index.html'"> Back</a>
+  <a class="button" onclick="window.location.href='index.php'"> Back</a>
   <!-- <a class="button" href="#right">Goal Overview</a> -->
 </div>
 
 <!-- needs to be abstracted for database retrieval -->
 <div class="form-container">
-  <h2>Add a New Book</h2>
-  <form>
-    <label for="title">Title:</label>
-    <input type="text" id="title" name="title" required>
+  <h2>Add a new book</h2>
 
-    <label for="author">Author:</label>
-    <input type="text" id="author" name="author" required>
-
-    <label for="genre">Genre:</label>
-    <input type="text" id="genre" name="genre">
-
-    <label for="cover">Cover Image URL:</label>
-    <input type="url" id="cover" name="cover">
-
-    <div class="center-container">
-      <button class="button" type="submit">Add Book</button>
-    </div>
+  <form action="add_book.php" method="POST">
+    Title: <input type="text" name="title" required><br>
+    Author: <input type="text" name="author" required><br>
+    Genre: <input type="text" name="genre"><br>
+    Cover URL: <input type="text" name="cover"><br>
+    Page Count: <input type="number" name="page-count" required><br>
+    <input type="submit" value="Add Book">
   </form>
 </div>
 

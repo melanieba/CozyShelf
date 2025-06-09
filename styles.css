@@ -116,3 +116,38 @@ input[type="url"] {
   border-radius: 8px;
   font-size: 16px;
 }
+
+/* goal overview page */
+#goal-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 50vh;
+}
+
+#progress-text {
+  font-size: 24px;
+  margin-bottom: 10px;
+}
+
+.goal-text {
+  margin-top: 8px;
+  font-size: 16px;
+}
+
+.progress-container {
+  width: 80%;
+  max-width: 500px;
+  height: 20px;
+  background-color: white;
+  border-radius: 10px;
+  overflow: hidden;
+  margin-top: 10px;
+}
+
+.progress-bar {
+  height: 100%;
+  width: 40%;
+  background-color: #D8973C;
+}

@@ -4,12 +4,22 @@ include 'db_connect.php';
 $book_id = isset($_GET['id']) ? intval($_GET['id']) : 0;
 
 // Handle progress update
-if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['progress'])) {
-    $newProgress = intval($_POST['progress']);
-    $stmt = $conn->prepare("UPDATE Book SET current_progress = ? WHERE book_id = ?");
-    $stmt->bind_param("ii", $newProgress, $book_id);
-    $stmt->execute();
-    $stmt->close();
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    if (isset($_POST['progress'])) {
+        $newProgress = intval($_POST['progress']);
+        $stmt = $conn->prepare("UPDATE Book SET current_progress = ? WHERE book_id = ?");
+        $stmt->bind_param("ii", $newProgress, $book_id);
+        $stmt->execute();
+        $stmt->close();
+    }
+
+    if (isset($_POST['note_content']) && !empty(trim($_POST['note_content']))) {
+        $note = trim($_POST['note_content']);
+        $stmt = $conn->prepare("INSERT INTO Note (note_date, note_time, note_content, book_id) VALUES (CURDATE(), CURTIME(), ?, ?)");
+        $stmt->bind_param("si", $note, $book_id);
+        $stmt->execute();
+        $stmt->close();
+    }
 }
 
 // Fetch book details
@@ -19,6 +29,12 @@ $stmt->execute();
 $result = $stmt->get_result();
 $book = $result->fetch_assoc();
 $stmt->close();
+
+// Fetch notes
+$note_stmt = $conn->prepare("SELECT note_date, note_time, note_content FROM Note WHERE book_id = ? ORDER BY note_date DESC, note_time DESC");
+$note_stmt->bind_param("i", $book_id);
+$note_stmt->execute();
+$notes_result = $note_stmt->get_result();
 ?>
 
 <!DOCTYPE html>
@@ -67,7 +83,7 @@ $stmt->close();
       flex: 1;
     }
 
-    .book-progress {
+    .book-progress, .book-notes {
       margin-top: 20px;
     }
 
@@ -78,13 +94,20 @@ $stmt->close();
       margin-bottom: 6px;
     }
 
-    input[type="number"] {
+    input[type="number"], textarea {
       padding: 10px;
       border: 1px solid #ccc;
       border-radius: 8px;
       font-size: 16px;
       width: 100%;
-      max-width: 200px;
+      max-width: 400px;
+      box-sizing: border-box;
+    }
+
+    textarea {
+      height: 100px;
+      resize: vertical;
+      margin-top: 8px;
     }
 
     .button {
@@ -104,6 +127,20 @@ $stmt->close();
 
     .button:hover {
       background-color: #c58533;
+    }
+
+    .note {
+      background-color: #fff;
+      border: 1px solid #ddd;
+      padding: 12px;
+      border-radius: 8px;
+      margin-top: 10px;
+    }
+
+    .note-date {
+      font-size: 14px;
+      color: #666;
+      margin-bottom: 6px;
     }
   </style>
 </head>
@@ -128,6 +165,22 @@ $stmt->close();
                min="0" max="<?= htmlspecialchars($book['page_count']) ?>">
         <button class="button" type="submit">Update</button>
       </form>
+
+      <div class="book-notes">
+        <h2>Notes</h2>
+        <form method="POST">
+          <label for="note_content">Add a note:</label>
+          <textarea name="note_content" id="note_content" placeholder="Write your thoughts..."></textarea>
+          <button class="button" type="submit">Add Note</button>
+        </form>
+
+        <?php while ($note = $notes_result->fetch_assoc()): ?>
+          <div class="note">
+            <div class="note-date"><?= htmlspecialchars($note['note_date']) ?> <?= htmlspecialchars($note['note_time']) ?></div>
+            <div><?= htmlspecialchars($note['note_content']) ?></div>
+          </div>
+        <?php endwhile; ?>
+      </div>
     </div>
   </div>
 <?php else: ?>
@@ -136,3 +189,4 @@ $stmt->close();
 
 </body>
 </html>
+
